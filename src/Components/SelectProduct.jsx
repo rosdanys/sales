@@ -122,6 +122,7 @@ const SelectProduct = () => {
         .then((result) => {
           setdataProduct(result.data.products)
           setdataMarks([])
+          setbarSales(initialState)
         })
     } else {
       setdataMarks([])
@@ -142,6 +143,7 @@ const SelectProduct = () => {
         })
         .then((result) => {
           setdataMarks(result.data.marks)
+          setbarSales(initialState)
         })
     } else {
       setdataMarks([])
