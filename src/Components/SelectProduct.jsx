@@ -115,7 +115,7 @@ const SelectProduct = () => {
     setidCategories(idint)
     setidProducts(0)
     setidMarks(0)
-    
+
     if (idint !== 0) {
       client
         .query({
@@ -130,6 +130,7 @@ const SelectProduct = () => {
     } else {
       setdataMarks([])
       setdataProduct([])
+      setbarSales(initialState)
     }
   }
   // Change for products
@@ -151,6 +152,7 @@ const SelectProduct = () => {
         })
     } else {
       setdataMarks([])
+      setbarSales(initialState)
     }
   }
 // Change for marks
@@ -168,6 +170,7 @@ const SelectProduct = () => {
         })
     } else {
       setdataSales([])
+      setbarSales(initialState)
     }
   }
 
