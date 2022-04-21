@@ -66,6 +66,7 @@ const SelectProduct = () => {
 
   const [idCategories, setidCategories] = useState(0)
   const [idProducts, setidProducts] = useState(0)
+  const [idMarks, setidMarks] = useState(0)
   const [dataSelectCat, setdataSelectCat] = useState([])
   const [dataProduct, setdataProduct] = useState([])
   const [dataMarks, setdataMarks] = useState([])
@@ -112,7 +113,9 @@ const SelectProduct = () => {
   const handleChangeCategories = (id) => {
     var idint = parseInt(id)
     setidCategories(idint)
-    refProduct.current.defaultValue = 0
+    setidProducts(0)
+    setidMarks(0)
+    
     if (idint !== 0) {
       client
         .query({
@@ -134,6 +137,7 @@ const SelectProduct = () => {
     var idint = parseInt(id)
 
     setidProducts(idint)
+    setidMarks(0)
 
     if (idint !== 0) {
       client
@@ -152,7 +156,7 @@ const SelectProduct = () => {
 // Change for marks
   const handleChangeMarks = (id) => {
     var idint = parseInt(id)
-
+    setidMarks(idint)
     if (idint !== 0) {
       client
         .query({
@@ -174,9 +178,10 @@ const SelectProduct = () => {
           <Select
             defaultValue="0"
             style={{ width: 250 }}
+            value={idCategories}
             onChange={handleChangeCategories}
           >
-            <Option value="0">Seleccione Categoria</Option>
+            <Option value={0}>Seleccione Categoria</Option>
             {Object.keys(dataSelectCat).length > 0
               ? dataSelectCat.map((item) => {
                   return (
@@ -192,9 +197,10 @@ const SelectProduct = () => {
             ref={refProduct}
             defaultValue="0"
             style={{ width: 250 }}
+            value={idProducts}
             onChange={handleChangeProducts}
           >
-            <Option value="0">Seleccione Producto</Option>
+            <Option key="0" value={0}>Seleccione Producto</Option>
             {Object.keys(dataProduct).length > 0
               ? dataProduct.map((item) => {
                   return (
@@ -209,9 +215,10 @@ const SelectProduct = () => {
           <Select
             defaultValue="0"
             style={{ width: 250 }}
+            value={idMarks}
             onChange={handleChangeMarks}
           >
-            <Option value="0">Seleccione Marcas</Option>
+            <Option key="0"  value={0}>Seleccione Marcas</Option>
             {Object.keys(dataMarks).length > 0
               ? dataMarks.map((item) => {
                   return (
